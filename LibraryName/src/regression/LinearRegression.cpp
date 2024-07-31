@@ -11,4 +11,3 @@ Eigen::VectorXd LinearRegression::predict(const Eigen::MatrixXd &X) const {
 Eigen::VectorXd LinearRegression::get_coefficients() const {
     return coefficients;
 }
-

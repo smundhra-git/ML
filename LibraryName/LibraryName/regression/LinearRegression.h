@@ -16,4 +16,3 @@ private:
 };
 
 #endif // LIBRARYNAME_LINEARREGRESSION_H
-
