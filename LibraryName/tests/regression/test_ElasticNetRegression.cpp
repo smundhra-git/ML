@@ -15,7 +15,7 @@ int main() {
         y(i) = 3 * X(i, 0) - 2 * X(i, 1) + (rand() % 10 / 10.0);
     }
 
-    ElasticNetRegression model(0.5, 1.0);
+    ElasticNetRegression model;
     model.fit(X, y);
 
     Eigen::VectorXd predictions = model.predict(X);
@@ -24,3 +24,4 @@ int main() {
 
     return 0;
 }
+

@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.4...3.18)
 project(LibraryName)
 
+set(CMAKE_CXX_STANDARD 11)
+
 add_subdirectory(pybind11)
 find_package(Eigen3 REQUIRED)
 
@@ -24,3 +26,4 @@ add_subdirectory(src/other)
 # Pybind11 module
 pybind11_add_module(LibraryName python/LibraryName.cpp)
 target_link_libraries(LibraryName PRIVATE Eigen3::Eigen)
+
