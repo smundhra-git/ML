@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Base directory
-LIBRARY_NAME="LibraryName"
+LIBRARY_NAME="SKLEARN"
 
 # Function to create files with initial content
 create_file() {
@@ -13,7 +13,7 @@ create_file() {
 
 # Create CMakeLists.txt
 create_file "$LIBRARY_NAME/CMakeLists.txt" "cmake_minimum_required(VERSION 3.4...3.18)
-project(LibraryName)
+project(SKLEARN)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -38,20 +38,20 @@ add_subdirectory(src/genetic_algorithms)
 add_subdirectory(src/other)
 
 # Pybind11 module
-pybind11_add_module(LibraryName python/LibraryName.cpp)
-target_link_libraries(LibraryName PRIVATE Eigen3::Eigen)
+pybind11_add_module(SKLEARN python/SKLEARN.cpp)
+target_link_libraries(SKLEARN PRIVATE Eigen3::Eigen)
 "
 
 # Create Python bindings
-create_file "$LIBRARY_NAME/python/LibraryName.cpp" "#include <pybind11/pybind11.h>
+create_file "$LIBRARY_NAME/python/SKLEARN.cpp" "#include <pybind11/pybind11.h>
 #include <pybind11/eigen.h>
-#include \"LibraryName/regression/ElasticNetRegression.h\"
-#include \"LibraryName/regression/LinearRegression.h\"
+#include \"SKLEARN/regression/ElasticNetRegression.h\"
+#include \"SKLEARN/regression/LinearRegression.h\"
 // Add includes for other algorithms as you implement them
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(LibraryName, m) {
+PYBIND11_MODULE(SKLEARN, m) {
     py::class_<ElasticNetRegression>(m, \"ElasticNetRegression\")
         .def(py::init<double, double>(), py::arg(\"l1_ratio\") = 0.5, py::arg(\"alpha\") = 1.0)
         .def(\"fit\", &ElasticNetRegression::fit, py::arg(\"X\"), py::arg(\"y\"), py::arg(\"max_iter\") = 1000, py::arg(\"tol\") = 1e-4)
@@ -75,8 +75,8 @@ generate_files() {
   local name_upper=$(echo "$name" | tr '[:lower:]' '[:upper:]')
 
   # Create header file
-  header_content="#ifndef LIBRARYNAME_${name_upper}_H
-#define LIBRARYNAME_${name_upper}_H
+  header_content="#ifndef SKLEARN_${name_upper}_H
+#define SKLEARN_${name_upper}_H
 
 #include <Eigen/Dense>
 
@@ -92,12 +92,12 @@ private:
     Eigen::VectorXd coefficients;
 };
 
-#endif // LIBRARYNAME_${name_upper}_H
+#endif // SKLEARN_${name_upper}_H
 "
-  create_file "$LIBRARY_NAME/include/LibraryName/$dir/$name.h" "$header_content"
+  create_file "$LIBRARY_NAME/include/SKLEARN/$dir/$name.h" "$header_content"
 
   # Create source file
-  source_content="#include \"LibraryName/$dir/$name.h\"
+  source_content="#include \"SKLEARN/$dir/$name.h\"
 
 void ${name}::fit(const Eigen::MatrixXd &X, const Eigen::VectorXd &y) {
     coefficients = (X.transpose() * X).ldlt().solve(X.transpose() * y);
@@ -114,7 +114,7 @@ Eigen::VectorXd ${name}::get_coefficients() const {
   create_file "$LIBRARY_NAME/src/$dir/$name.cpp" "$source_content"
 
   # Create test file
-  test_content="#include \"LibraryName/$dir/$name.h\"
+  test_content="#include \"SKLEARN/$dir/$name.h\"
 #include <iostream>
 #include <Eigen/Dense>
 

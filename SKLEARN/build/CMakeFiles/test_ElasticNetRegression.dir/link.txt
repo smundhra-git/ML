@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -F/opt/homebrew/Frameworks CMakeFiles/test_ElasticNetRegression.dir/tests/regression/test_ElasticNetRegression.cpp.o -o test_ElasticNetRegression  libregression_ElasticNetRegression.a

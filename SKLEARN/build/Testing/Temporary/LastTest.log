@@ -1,0 +1,20 @@
+Start testing: Nov 29 17:50 EST
+----------------------------------------------------------
+1/1 Testing: ElasticNetRegressionTest
+1/1 Test: ElasticNetRegressionTest
+Command: "/Users/shlokmundhra/Documents/proj/ML_Library/SKLEARN/build/test_ElasticNetRegression"
+Directory: /Users/shlokmundhra/Documents/proj/ML_Library/SKLEARN/build
+"ElasticNetRegressionTest" start time: Nov 29 17:50 EST
+Output:
+----------------------------------------------------------
+Coefficients:  3.05232 -1.96568
+First 10 Predictions:   18.397  7.38427  7.48677  4.61513 -1.24656  8.36095 0.100215   17.032  15.0919   2.9657
+<end of output>
+Test time =   0.40 sec
+----------------------------------------------------------
+Test Passed.
+"ElasticNetRegressionTest" end time: Nov 29 17:50 EST
+"ElasticNetRegressionTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 29 17:50 EST
