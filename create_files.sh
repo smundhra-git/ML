@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Base directory
-LIBRARY_NAME="SKLEARN"
+LIBRARY_NAME="Shlok_ML"
 
 # Function to create files with initial content
 create_file() {
@@ -13,7 +13,7 @@ create_file() {
 
 # Create CMakeLists.txt
 create_file "$LIBRARY_NAME/CMakeLists.txt" "cmake_minimum_required(VERSION 3.4...3.18)
-project(SKLEARN)
+project(Shlok_ML)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -38,20 +38,20 @@ add_subdirectory(src/genetic_algorithms)
 add_subdirectory(src/other)
 
 # Pybind11 module
-pybind11_add_module(SKLEARN python/SKLEARN.cpp)
-target_link_libraries(SKLEARN PRIVATE Eigen3::Eigen)
+pybind11_add_module(Shlok_ML python/Shlok_ML.cpp)
+target_link_libraries(Shlok_ML PRIVATE Eigen3::Eigen)
 "
 
 # Create Python bindings
-create_file "$LIBRARY_NAME/python/SKLEARN.cpp" "#include <pybind11/pybind11.h>
+create_file "$LIBRARY_NAME/python/Shlok_ML.cpp" "#include <pybind11/pybind11.h>
 #include <pybind11/eigen.h>
-#include \"SKLEARN/regression/ElasticNetRegression.h\"
-#include \"SKLEARN/regression/LinearRegression.h\"
+#include \"Shlok_ML/regression/ElasticNetRegression.h\"
+#include \"Shlok_ML/regression/LinearRegression.h\"
 // Add includes for other algorithms as you implement them
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(SKLEARN, m) {
+PYBIND11_MODULE(Shlok_ML, m) {
     py::class_<ElasticNetRegression>(m, \"ElasticNetRegression\")
         .def(py::init<double, double>(), py::arg(\"l1_ratio\") = 0.5, py::arg(\"alpha\") = 1.0)
         .def(\"fit\", &ElasticNetRegression::fit, py::arg(\"X\"), py::arg(\"y\"), py::arg(\"max_iter\") = 1000, py::arg(\"tol\") = 1e-4)
@@ -75,8 +75,8 @@ generate_files() {
   local name_upper=$(echo "$name" | tr '[:lower:]' '[:upper:]')
 
   # Create header file
-  header_content="#ifndef SKLEARN_${name_upper}_H
-#define SKLEARN_${name_upper}_H
+  header_content="#ifndef Shlok_ML_${name_upper}_H
+#define Shlok_ML_${name_upper}_H
 
 #include <Eigen/Dense>
 
@@ -92,12 +92,12 @@ private:
     Eigen::VectorXd coefficients;
 };
 
-#endif // SKLEARN_${name_upper}_H
+#endif // Shlok_ML_${name_upper}_H
 "
-  create_file "$LIBRARY_NAME/include/SKLEARN/$dir/$name.h" "$header_content"
+  create_file "$LIBRARY_NAME/include/Shlok_ML/$dir/$name.h" "$header_content"
 
   # Create source file
-  source_content="#include \"SKLEARN/$dir/$name.h\"
+  source_content="#include \"Shlok_ML/$dir/$name.h\"
 
 void ${name}::fit(const Eigen::MatrixXd &X, const Eigen::VectorXd &y) {
     coefficients = (X.transpose() * X).ldlt().solve(X.transpose() * y);
@@ -114,7 +114,7 @@ Eigen::VectorXd ${name}::get_coefficients() const {
   create_file "$LIBRARY_NAME/src/$dir/$name.cpp" "$source_content"
 
   # Create test file
-  test_content="#include \"SKLEARN/$dir/$name.h\"
+  test_content="#include \"Shlok_ML/$dir/$name.h\"
 #include <iostream>
 #include <Eigen/Dense>
 
@@ -205,7 +205,7 @@ for algo in SGA GeneticProgramming DifferentialEvolution EvolutionaryStrategies;
 done
 
 # Other algorithms
-for algo in SVR OrdinalRegression MultiTaskLearning ZeroShotLearning FewShotLearning; do
+for algo in SVR OrdinalRegression MultiTaShlok_MLing ZeroShotLearning FewShotLearning; do
   generate_files "other" $algo
 done
 

@@ -1,6 +1,6 @@
-# SKLEARN - Custom Machine Learning Library
+# Shlok_ML - Custom Machine Learning Library
 
-SKLEARN is a custom machine learning library written in C++ with Python bindings using **pybind11**. It leverages **Eigen** for efficient numerical computations and supports various machine learning algorithms.
+Shlok_ML is a custom machine learning library written in C++ with Python bindings using **pybind11**. It leverages **Eigen** for efficient numerical computations and supports various machine learning algorithms.
 
 ---
 
@@ -48,7 +48,7 @@ SKLEARN is a custom machine learning library written in C++ with Python bindings
 
 ```bash
 git clone https://github.com/smundhra/ML.git
-cd SKLEARN
+cd Shlok_ML
 
 ### **2. Install Dependencies **
 Install the required Python packages:
@@ -92,16 +92,16 @@ You can now import the module in Python:
 
 python
 
-import SKLEARN
+import Shlok_ML
 
 # Example usage
-from SKLEARN import ElasticNetRegression
+from Shlok_ML import ElasticNetRegression
 
 model = ElasticNetRegression(l1_ratio=0.5, alpha=1.0)
 # Use `fit`, `predict`, and other methods
 Directory Structure
 
-SKLEARN/
+Shlok_ML/
 ├── include/               # Header files for the algorithms
 ├── src/                   # Source files for the algorithms
 ├── tests/                 # Unit tests for each module

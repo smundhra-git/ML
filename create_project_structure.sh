@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # Base directory
-LIBRARY_NAME="SKLEARN"
+LIBRARY_NAME="Shlok_ML"
 
 # Create base directories
-mkdir -p $LIBRARY_NAME/{include/SKLEARN/{regression,classification,clustering,dimensionality_reduction,semi_supervised,reinforcement_learning,ensemble_learning,neural_networks,anomaly_detection,bayesian_learning,instance_based,genetic_algorithms,other},src/{regression,classification,clustering,dimensionality_reduction,semi_supervised,reinforcement_learning,ensemble_learning,neural_networks,anomaly_detection,bayesian_learning,instance_based,genetic_algorithms,other},python,tests/{regression,classification,clustering,dimensionality_reduction,semi_supervised,reinforcement_learning,ensemble_learning,neural_networks,anomaly_detection,bayesian_learning,instance_based,genetic_algorithms,other}}
+mkdir -p $LIBRARY_NAME/{include/Shlok_ML/{regression,classification,clustering,dimensionality_reduction,semi_supervised,reinforcement_learning,ensemble_learning,neural_networks,anomaly_detection,bayesian_learning,instance_based,genetic_algorithms,other},src/{regression,classification,clustering,dimensionality_reduction,semi_supervised,reinforcement_learning,ensemble_learning,neural_networks,anomaly_detection,bayesian_learning,instance_based,genetic_algorithms,other},python,tests/{regression,classification,clustering,dimensionality_reduction,semi_supervised,reinforcement_learning,ensemble_learning,neural_networks,anomaly_detection,bayesian_learning,instance_based,genetic_algorithms,other}}
 
 # Create sample CMakeLists.txt
 cat <<EOL > $LIBRARY_NAME/CMakeLists.txt
 cmake_minimum_required(VERSION 3.4...3.18)
-project(SKLEARN)
+project(Shlok_ML)
 
 add_subdirectory(pybind11)
 find_package(Eigen3 REQUIRED)
@@ -32,14 +32,14 @@ add_subdirectory(src/genetic_algorithms)
 add_subdirectory(src/other)
 
 # Pybind11 module
-pybind11_add_module(SKLEARN python/SKLEARN.cpp)
-target_link_libraries(SKLEARN PRIVATE Eigen3::Eigen)
+pybind11_add_module(Shlok_ML python/Shlok_ML.cpp)
+target_link_libraries(Shlok_ML PRIVATE Eigen3::Eigen)
 EOL
 
 # Create a sample header and source file for ElasticNetRegression
-cat <<EOL > $LIBRARY_NAME/include/SKLEARN/regression/ElasticNetRegression.h
-#ifndef SKLEARN_ELASTICNETREGRESSION_H
-#define SKLEARN_ELASTICNETREGRESSION_H
+cat <<EOL > $LIBRARY_NAME/include/Shlok_ML/regression/ElasticNetRegression.h
+#ifndef Shlok_ML_ELASTICNETREGRESSION_H
+#define Shlok_ML_ELASTICNETREGRESSION_H
 
 #include <Eigen/Dense>
 
@@ -62,11 +62,11 @@ private:
     double soft_threshold(double rho, double lambda) const;
 };
 
-#endif // SKLEARN_ELASTICNETREGRESSION_H
+#endif // Shlok_ML_ELASTICNETREGRESSION_H
 EOL
 
 cat <<EOL > $LIBRARY_NAME/src/regression/ElasticNetRegression.cpp
-#include "SKLEARN/regression/ElasticNetRegression.h"
+#include "Shlok_ML/regression/ElasticNetRegression.h"
 
 ElasticNetRegression::ElasticNetRegression(double l1_ratio, double alpha)
     : l1_ratio(l1_ratio), alpha(alpha) {}
@@ -111,14 +111,14 @@ double ElasticNetRegression::soft_threshold(double rho, double lambda) const {
 EOL
 
 # Create a sample Python binding file
-cat <<EOL > $LIBRARY_NAME/python/SKLEARN.cpp
+cat <<EOL > $LIBRARY_NAME/python/Shlok_ML.cpp
 #include <pybind11/pybind11.h>
 #include <pybind11/eigen.h>
-#include "SKLEARN/regression/ElasticNetRegression.h"
+#include "Shlok_ML/regression/ElasticNetRegression.h"
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(SKLEARN, m) {
+PYBIND11_MODULE(Shlok_ML, m) {
     py::class_<ElasticNetRegression>(m, "ElasticNetRegression")
         .def(py::init<double, double>(), py::arg("l1_ratio") = 0.5, py::arg("alpha") = 1.0)
         .def("fit", &ElasticNetRegression::fit, py::arg("X"), py::arg("y"), py::arg("max_iter") = 1000, py::arg("tol") = 1e-4)
@@ -129,7 +129,7 @@ EOL
 
 # Create a sample test file for ElasticNetRegression
 cat <<EOL > $LIBRARY_NAME/tests/regression/test_ElasticNetRegression.cpp
-#include "SKLEARN/regression/ElasticNetRegression.h"
+#include "Shlok_ML/regression/ElasticNetRegression.h"
 #include <iostream>
 #include <Eigen/Dense>
 
