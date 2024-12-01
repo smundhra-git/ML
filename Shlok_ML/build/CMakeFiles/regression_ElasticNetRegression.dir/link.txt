@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libregression_ElasticNetRegression.a CMakeFiles/regression_ElasticNetRegression.dir/src/regression/ElasticNetRegression.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libregression_ElasticNetRegression.a
