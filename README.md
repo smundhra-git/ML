@@ -1,6 +1,6 @@
-# Shlok_ML - Custom Machine Learning Library
+# ML - Custom Machine Learning Library
 
-**Shlok_ML** is a custom Machine Learning library written primarily in **C++** (75%), with additional support from **Python** and **Fortran**. This library aims to provide modular, efficient, and extensible implementations of various machine learning algorithms, featuring Python bindings for broader usability. It is designed for performance and adaptability, leveraging **Eigen** for high-performance numerical computations.
+**ML** is a custom Machine Learning library written primarily in **C++** (75%), with additional support from **Python** and **Fortran**. This library aims to provide modular, efficient, and extensible implementations of various machine learning algorithms, featuring Python bindings for broader usability. It is designed for performance and adaptability, leveraging **Eigen** for high-performance numerical computations.
 
 ---
 
@@ -71,7 +71,7 @@ The library currently includes the following implementations:
 
 ## 🌟 Future Ideas
 
-We are actively looking to expand Shlok_ML with the following features:
+We are actively looking to expand the library with the following features:
 
 - **Reinforcement Learning**:
   - Q-Learning
